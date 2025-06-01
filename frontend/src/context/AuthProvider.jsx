@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
   const [name, setName] = useState(localStorage.getItem('name') || '');
   const [weddingInfo, setWeddingInfo] = useState({
     groom: 'Ari', wife: 'Courtnee', date: 'May 15th, 2026', ourStory: 'write something here about us', ceremony: 'EDC 2026 Chapel Of Nature between 8:00 PM - 9:00 PM', 
-    reception: 'EDC 2026 for the weekend, come party with us!', dressCode: 'Festival Attire', location: 'EDC Las Vegas -  7000 Las Vegas Blvd N, Las Vegas, NV 89115'
+    reception: 'EDC 2026 for the weekend, come party with us!', dressCode: 'Festival Attire', location: 'EDC Las Vegas -  7000 Las Vegas Blvd N, Las Vegas, NV 89115', directions: 'Do NOT use Google or Waze. Your driving and parking experience will be the fastest and easiest if you follow our directions and signs, and follow us on all social media. Please follow all signs and traffic officer directions. I-15 is the best, fastest route to the festival. Use I-15 northbound. From the Strip, get onto I-15 North via either Tropicana Ave, Flamingo Rd, Spring Mountain Rd, or Sahara Ave. Stay on I-15 all the way to the Speedway at Exit 54. Look out for electronic message signs on the freeway with the latest information and traffic updates. Use both right-hand lanes approaching the Speedway on I-15; pick the lane with the least traffic all the way to Exit 54 (Speedway Blvd).'
   });
 
 

@@ -3,9 +3,11 @@ import { useAuth } from "../context/AuthProvider";
 import './Navbar.css';
 
 const Navbar = () => {
-  const { logout, token } = useAuth();
+  const { logout, token, name } = useAuth();
    return (
     <nav className="navbar">
+       {name ? <h1 id='name'>Hello {name}</h1> : <></>
+    }
       <Link to="/" className="nav-link">
         Home
       </Link>
@@ -17,6 +19,9 @@ const Navbar = () => {
       </Link>
       <Link to="/info" className="nav-link">
         Wedding Info
+      </Link>
+      <Link to='/rsvp' className="nav-link">
+        RSVP
       </Link>
 
       {token ? (

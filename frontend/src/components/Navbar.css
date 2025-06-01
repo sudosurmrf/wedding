@@ -43,6 +43,9 @@
   background-color: transparent;
   color: #bfa58b;
 }
+#name {
+   padding-right: 2rem;
+}
 
 /* ─── Responsive Adjustments ───────────────────────────────────────────────────── */
 @media (max-width: 768px) {
