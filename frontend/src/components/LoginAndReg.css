@@ -1,0 +1,100 @@
+/* ─── Container to center the card ─────────────────────────────────────────────── */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px); /* adjust if you have a fixed navbar height */
+  padding: 1rem;
+  background-color: #faf6f0; /* soft ivory background */
+}
+
+/* ─── Card that holds the form ────────────────────────────────────────────────── */
+.auth-card {
+  background-color: rgba(250, 246, 240, 0.98); /* almost-white ivory */
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+}
+
+/* ─── Heading inside the card ───────────────────────────────────────────────── */
+.auth-heading {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  color: #5a3e36; /* warm brown */
+  margin-bottom: 1rem;
+}
+
+/* ─── Shared Input Styles ────────────────────────────────────────────────────── */
+.auth-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid #dcd0c0;
+  border-radius: 6px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #3a3a3a;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: #bfa58b; /* gold accent */
+  box-shadow: 0 0 0 2px rgba(191, 165, 139, 0.3);
+}
+
+/* ─── Primary Button (Login/Register/Logout) ─────────────────────────────────── */
+.auth-button {
+  width: 100%;
+  background-color: #bfa58b; /* gold accent */
+  color: #faf6f0; /* ivory text */
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  padding: 0.75rem;
+  border: 2px solid #bfa58b;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-bottom: 0.75rem;
+}
+
+.auth-button:hover {
+  background-color: transparent;
+  color: #bfa58b;
+}
+
+/* ─── Toggle Link Button (Switch between Login & Register) ──────────────────── */
+.toggle-button {
+  background: none;
+  border: none;
+  color: #5a3e36; /* warm brown */
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.toggle-button:hover {
+  color: #bfa58b;
+}
+
+/* ─── Responsive Adjustment ──────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 1.5rem;
+  }
+
+  .auth-heading {
+    font-size: 2rem;
+  }
+
+  .auth-button {
+    font-size: 0.9rem;
+    padding: 0.65rem;
+  }
+}

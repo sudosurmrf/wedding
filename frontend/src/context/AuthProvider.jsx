@@ -8,6 +8,24 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const [token, setToken] = useState(localStorage.getItem('token') || null);
   const [name, setName] = useState(localStorage.getItem('name') || '');
+  const [weddingInfo, setWeddingInfo] = useState({
+    groom: 'Ari', wife: 'Courtnee', date: 'May 15th, 2026', ourStory: 'write something here about us', ceremony: 'EDC 2026 Chapel Of Nature between 8:00 PM - 9:00 PM', 
+    reception: 'EDC 2026 for the weekend, come party with us!', dressCode: 'Festival Attire', location: 'EDC Las Vegas -  7000 Las Vegas Blvd N, Las Vegas, NV 89115'
+  });
+
+
+useEffect(()=> {
+  const getInfo = async() => {
+    const response = await fetch(`${BASE_URL}/info`);
+    const result = await response.json();
+    console.log(result);
+    if(result.length >= 2){
+      return console.error('to many wedding objects currently!')
+    }
+    setWeddingInfo(result[0])
+  }
+  getInfo();
+},[])
 
   useEffect(() => {
     if (!token) {
@@ -68,7 +86,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ name, token, logout, login, register }}>
+    <AuthContext.Provider value={{ weddingInfo, name, token, logout, login, register }}>
       {children}
     </AuthContext.Provider>
   )

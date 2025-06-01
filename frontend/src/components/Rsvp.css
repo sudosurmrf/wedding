@@ -1,0 +1,153 @@
+/* ─── Container & Card ───────────────────────────────────────────────────────── */
+.rsvp-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  background-color: #faf6f0; /* soft ivory */
+  min-height: calc(100vh - 80px); /* adjust if you have a fixed navbar height */
+}
+
+.rsvp-card {
+  background-color: rgba(250, 246, 240, 0.98); /* light ivory */
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 480px;
+  width: 100%;
+}
+
+/* ─── Heading ────────────────────────────────────────────────────────────────── */
+.rsvp-heading {
+  font-family: "Great Vibes", cursive;
+  font-size: 2.5rem;
+  color: #5a3e36; /* warm brown */
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* ─── Form Layout ─────────────────────────────────────────────────────────────── */
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Flex row for two fields side by side */
+.rsvp-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.rsvp-row .rsvp-field {
+  flex: 1;
+}
+
+/* ─── Labels ─────────────────────────────────────────────────────────────────── */
+.rsvp-label {
+  display: block;
+  font-family: "Playfair Display", serif;
+  font-size: 1rem;
+  color: #5a3e36; /* warm brown */
+  margin-bottom: 0.5rem;
+}
+
+/* ─── Inputs & Select ────────────────────────────────────────────────────────── */
+.rsvp-field {
+  margin-bottom: 1rem;
+}
+
+.rsvp-input,
+.rsvp-select,
+.rsvp-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #dcd0c0;
+  border-radius: 6px;
+  font-family: "Playfair Display", serif;
+  font-size: 1rem;
+  color: #3a3a3a;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rsvp-input:focus,
+.rsvp-select:focus,
+.rsvp-textarea:focus {
+  outline: none;
+  border-color: #bfa58b; /* gold accent */
+  box-shadow: 0 0 0 2px rgba(191, 165, 139, 0.3);
+}
+
+/* ─── Radio Buttons ─────────────────────────────────────────────────────────── */
+.rsvp-radio-group {
+  display: flex;
+  gap: 1.5rem;
+  font-family: "Playfair Display", serif;
+  color: #3a3a3a;
+}
+
+.rsvp-radio-group label {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.rsvp-radio-group input[type="radio"] {
+  margin-right: 0.5rem;
+}
+
+/* ─── Submit Button ──────────────────────────────────────────────────────────── */
+.rsvp-button {
+  background-color: #bfa58b; /* gold accent */
+  color: #faf6f0; /* ivory text */
+  font-family: "Playfair Display", serif;
+  font-size: 1rem;
+  padding: 0.75rem;
+  border: 2px solid #bfa58b;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.rsvp-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.rsvp-button:hover:enabled {
+  background-color: transparent;
+  color: #bfa58b;
+}
+
+/* ─── Status Messages ───────────────────────────────────────────────────────── */
+.rsvp-success,
+.rsvp-error {
+  margin-top: 1rem;
+  font-family: "Playfair Display", serif;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.rsvp-success {
+  color: #2d7d46; /* deep green for success */
+}
+
+.rsvp-error {
+  color: #a73a3a; /* muted red for errors */
+}
+
+/* ─── Responsive Adjustments ─────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .rsvp-row {
+    flex-direction: column;
+  }
+  .rsvp-heading {
+    font-size: 2rem;
+  }
+  .rsvp-button {
+    font-size: 0.9rem;
+    padding: 0.65rem;
+  }
+}

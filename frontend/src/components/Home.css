@@ -1,0 +1,176 @@
+/* ---------- Global Reset & Base Styles ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Playfair Display', serif;
+  background-color: #faf6f0;
+  color: #3a3a3a;
+  line-height: 1.6;
+}
+
+/* ---------- Container ---------- */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ---------- Hero Section ---------- */
+.hero {
+  position: relative;
+  height: 100vh;
+  background-image: url('./coupleV9.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(250, 246, 240, 0.70); /* slightly creamy overlay */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.hero-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 4rem;
+  color: #5a3e36;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: #5a3e36;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.hero-button {
+  background-color: #bfa58b;
+  color: #faf6f0;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #bfa58b;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: #bfa58b1a;
+  color: #8a541e;
+}
+
+/* ---------- Section Headings ---------- */
+.section-heading {
+  font-size: 2rem;
+  text-align: center;
+  margin: 3rem 0 1rem;
+  color: #5a3e36;
+  position: relative;
+}
+
+/* Small underlining accent below headings */
+.section-heading::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #bfa58b;
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* ---------- Our Story Section ---------- */
+.story-section {
+  max-width: 700px;
+  margin: 0 auto 4rem;
+  padding: 0 1rem;
+}
+
+.story-text {
+  font-size: 1.125rem;
+  color: #4a4a4a;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* ---------- Event Details Section ---------- */
+.details-section {
+  max-width: 700px;
+  margin: 0 auto 4rem;
+  padding: 0 1rem;
+}
+
+.details-list {
+  list-style: none;
+  margin-top: 1.5rem;
+}
+
+.details-list li {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  color: #4a4a4a;
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+
+.detail-label {
+  font-weight: 700;
+  color: #5a3e36;
+  margin-right: 0.5rem;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background-color: #f4efe8;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.footer-text {
+  font-size: 1rem;
+  color: #5a3e36;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ---------- Responsive Adjustments ---------- */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+  .hero-button {
+    font-size: 0.9rem;
+    padding: 0.65rem 1.25rem;
+  }
+  .section-heading {
+    font-size: 1.75rem;
+  }
+  .story-text,
+  .details-list li {
+    font-size: 1rem;
+  }
+}

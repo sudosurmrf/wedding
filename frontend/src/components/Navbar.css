@@ -1,0 +1,58 @@
+/* ─── Navbar Container ─────────────────────────────────────────────────────────── */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  background-color: rgba(250, 246, 240, 0.95); /* light creamy ivory */
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow */
+}
+
+/* ─── Link Styling ───────────────────────────────────────────────────────────────── */
+.nav-link {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: #5a3e36; /* warm brown */
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #bfa58b; /* gold accent on hover */
+}
+
+/* ─── Logout Button Styling ────────────────────────────────────────────────────── */
+.nav-button {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  background-color: #bfa58b; /* gold accent */
+  color: #faf6f0; /* ivory text */
+  border: 2px solid #bfa58b;
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: transparent;
+  color: #bfa58b;
+}
+
+/* ─── Responsive Adjustments ───────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .navbar {
+    gap: 1rem;
+    padding: 0.75rem 0;
+  }
+
+  .nav-link,
+  .nav-button {
+    font-size: 0.9rem;
+  }
+}
