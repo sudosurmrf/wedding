@@ -38,7 +38,7 @@ router.post('/register', async(req,res,next) => {
 
       if(!newUser) return res.status(401).send('couldnt register a new user');
       const token = jwt.sign({id: newUser.id, name: newUser.first_name}, process.env.JWT_SECRET)
-      res.status(201).send(token);
+      res.status(201).json({token, name: firstName});
   }catch(err){
     console.log(err);
     res.send('Internal Error, plaese try again.')
@@ -56,7 +56,7 @@ router.post('/login', async(req,res,next) => {
     const passMatch = await bcrypt.compare(password, realInfo.password);
     if(!passMatch) return res.status(404).send('info does not match');
     const token = jwt.sign({id: realInfo.id, name: realInfo.first_name}, process.env.JWT_SECRET)
-      res.status(201).send(token);
+      res.status(201).json({token, name: realInfo.first_name});
   }catch(err){
     console.log(err);
     res.send('internal Error. Try again');
