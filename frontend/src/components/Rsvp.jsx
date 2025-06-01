@@ -26,7 +26,7 @@ const Rsvp = () => {
     };
 
     try {
-      const res = await fetch("/api/rsvp", {
+      const res = await fetch(`${BASE_URL}/rsvp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -141,20 +141,19 @@ const Rsvp = () => {
                 </select>
               </div>
 
-              {/* Dietary Restrictions / Notes
               <div className="rsvp-field">
-                <label htmlFor="dietary" className="rsvp-label">
-                  Dietary restrictions or notes
+                <label htmlFor="message" className="rsvp-label">
+                  Leave us a message!
                 </label>
                 <textarea
-                  id="dietary"
+                  id="message"
                   rows="3"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="e.g. Vegetarian, allergies, etc."
+                  placeholder="Any message you would like to let us know / request / show us your excitement?"
                   className="rsvp-textarea"
                 />
-              </div> */}
+              </div>
             </>
           )}
 
