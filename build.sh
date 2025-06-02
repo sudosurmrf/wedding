@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
-cd frontend &&
-npm i && 
-npm run build && 
-cd .. && 
-cd backend && 
-npm i
+set -e
+
+cd frontend
+npm install
+npm run build
+
+cd ../backend
+npm install
