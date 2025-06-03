@@ -14,6 +14,15 @@ app.use(express.static(path.join(__dirname, '../frontend/dist')))
 app.use('/api', apiRouter);
 
 
+app.get(/^(?!\/api).*/, (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+});
+
+app.use((err, req,res,next) => {
+  console.log(err);
+  res.status(err.status || 500).json({error: err})
+})
+
 app.listen(process.env.PORT,() => {
   console.log(`listening on ${process.env.PORT}`)
 });
