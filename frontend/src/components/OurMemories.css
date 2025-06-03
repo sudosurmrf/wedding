@@ -1,0 +1,54 @@
+.our-memories-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: sans-serif;
+}
+
+.messages-list {
+  list-style: none;
+  padding: 0;
+}
+
+.message-item {
+  border-bottom: 1px solid #eee;
+  padding: 0.75rem 0;
+}
+
+.message-date {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.message-body {
+  margin: 0.25rem 0 0;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.media-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fafafa;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.media-card img,
+.media-card video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.media-meta {
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  color: #444;
+  text-align: center;
+}
