@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const BASE_URL = 'http://localhost:3000/api'
+  const BASE_URL = 'https://defund-the-hoa.com/api'
   const navigate = useNavigate();
   const [token, setToken] = useState(localStorage.getItem('token') || null);
   const [name, setName] = useState(localStorage.getItem('name') || '');
