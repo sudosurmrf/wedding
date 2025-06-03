@@ -2,7 +2,7 @@
   font-family: "Playfair Display";
   font-style: normal;
   font-weight: 400;
-  src: url("./fonts/PlayFairDisplay-Regular.ttf") format("truetype");
+  src: url("fonts/PlayFairDisplay-Regular.ttf") format("truetype");
   font-display: swap;
 }
 
@@ -10,7 +10,7 @@
   font-family: "Playfair Display";
   font-style: italic;
   font-weight: 400;
-  src: url("./fonts/PlayFairDisplay-Italic.ttf") format("truetype");
+  src: url("fonts/PlayFairDisplay-Italic.ttf") format("truetype");
   font-display: swap;
 }
 
@@ -18,6 +18,6 @@
   font-family: "Great Vibes";
   font-style: normal;
   font-weight: 400;
-  src: url("./fonts/GreatVibes-Regular.ttf") format("truetype");
+  src: url("fonts/GreatVibes-Regular.ttf") format("truetype");
   font-display: swap;
 }
