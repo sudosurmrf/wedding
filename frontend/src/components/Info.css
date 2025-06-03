@@ -10,7 +10,7 @@
 .info-hero {
   position: relative;
   height: 60vh; /* half‐screen banner */
-  background-image: url("./assets/edclv2025.jpg"); 
+  background-image: url("./edclv2025.jpg"); 
   background-size: cover;
   background-position: center;
 }
