@@ -34,7 +34,9 @@ export default function OurMemories() {
 
   return (
     <div className="our-memories-container">
-      <h2>💌 Guest Messages</h2>
+      <h2>Send us pictures and a message! Text them to: <strong>325-880-0855</strong>, they will be uploaded to our website!</h2>
+      <p><i>*Registering an account on the website with the same phone number you send the messages from will make your name display next to your messages.*</i></p>
+      <h2>💌 Guest Messages:</h2>
       {messages.length === 0 ? (
         <p>No messages yet. Text our number!</p>
       ) : (
