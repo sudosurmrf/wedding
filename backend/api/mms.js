@@ -18,7 +18,7 @@ const S3_BUCKET = process.env.S3_BUCKET
 
 router.use(bodyParser.urlencoded({extended: false}));
 
-router.post('/mms', async(req,res,next) => {
+router.post('/', async(req,res,next) => {
   try{
     const fromNumber = req.body.From;
     const textBody = req.body.Body;
