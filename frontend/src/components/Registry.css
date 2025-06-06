@@ -1,0 +1,85 @@
+.registry-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: sans-serif;
+  color: #333;
+}
+
+.registry-heading {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.registry-section {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 1.5rem;
+}
+
+.registry-subheading {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.registry-button {
+  display: inline-block;
+  background-color: #0073e6;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
+
+.registry-button:hover {
+  background-color: #005bb5;
+}
+
+.registry-grid {
+  display: flex;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.registry-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fafafa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.registry-card-image {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.registry-card-content {
+  padding: 0.75rem 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.registry-card-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.registry-card-link {
+  color: #0073e6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.registry-card-link:hover {
+  text-decoration: underline;
+}

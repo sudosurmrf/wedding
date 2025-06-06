@@ -7,6 +7,7 @@ import Home from './components/Home';
 import Rsvp from './components/Rsvp';
 import Info from './components/Info';
 import OurMemories from './components/OurMemories';
+import Registry from './components/Registry';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path='/login' element={<LoginAndReg />} />
         <Route path='/rsvp' element={<Rsvp />} />
         <Route path='/info' element={<Info />} />
+        <Route path='/registry' element={<Registry />} />
       </Routes>
     </>
   )
