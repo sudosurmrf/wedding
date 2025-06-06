@@ -5,6 +5,7 @@ export default function Registry() {
   // Zelle and other items as before…
   const zellePayee = '5169985622';
   const zelleLink = `zelle://send?recipient=${encodeURIComponent(zellePayee)}`;
+  const amazonWishListUrl = 'https://www.amazon.com/wedding/share/defund-the-hoa'
 
   const otherItems = [
     {
@@ -55,8 +56,16 @@ export default function Registry() {
         </div>
       </section>
 
-      {/* —————  Amazon Wish List Section  ————— */}
+      {/* Amazon Wishlist Section */}
       <section className="registry-section">
+        <h3 className="registry-subheading">Amazon Wishlist</h3>
+        <p>If you’d like to pick something from our Amazon registry, click below:</p>
+        <a
+          href={amazonWishListUrl}
+          className="registry-button"
+        >
+          View Amazon Wishlist
+        </a>
       </section>
 
       {/* —————  Zelle Section  ————— */}
