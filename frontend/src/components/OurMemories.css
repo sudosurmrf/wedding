@@ -52,3 +52,9 @@
   color: #444;
   text-align: center;
 }
+
+.media-caption {
+  margin-top: 0.5rem;
+  font-style: italic;
+  color: #333;
+}

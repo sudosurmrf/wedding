@@ -22,7 +22,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 router.post('/', async (req, res, next) => {
   try {
     const fromNumber = req.body.From;
-    const textBody = req.body.Body;
+    const textBody = req.body.Body || "";
     const numMedia = parseInt(req.body.NumMedia, 10);
 
     if (numMedia > 0) {
@@ -66,18 +66,21 @@ router.post('/', async (req, res, next) => {
             fromNumber,
             mediaUrl: publicUrl,
             mediaType: contentType,
+            caption: textBody !== '' ? textBody : null,
           },
         });
       }
     } else {
       // plain text sms db save
-      const bodyText = textBody || '';
-      await prisma.message.create({
-        data: {
-          fromNumber,
-          body: bodyText,
-        },
-      });
+      const bodyText = textBody.trim();
+      if(bodyText.length > 0) {
+        await prisma.message.create({
+          data: {
+            fromNumber,
+            body: bodyText,
+          },
+        });
+      }
     }
 
     // twilio reply afterwards, if i can finish setting it up

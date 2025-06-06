@@ -55,7 +55,8 @@ export default function OurMemories() {
         <p>No media yet, coming soon!</p>
       ) : (
         <div className="media-grid">
-          {mediaItems.map((item) => (
+          {
+          mediaItems.map((item) => (
             <div key={item.id} className="media-card">
               {item.mediaType.startsWith('image/') ? (
                 <img
@@ -73,6 +74,8 @@ export default function OurMemories() {
                 <small>
                   {new Date(item.receivedAt).toLocaleString()} — {item.fromNumber}
                 </small>
+                {item.caption && (
+                <p className="media-caption">{item.caption}</p>)}
               </div>
             </div>
           ))}
