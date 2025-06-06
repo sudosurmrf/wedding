@@ -18,11 +18,13 @@ const LoginAndReg = () => {
   };
 
   const handleRegister = async () => {
-    await register(firstName, lastName, email, password, phone);
+    const cleanedPhone = phone.replace(/[\(\)\-\+]/g, "");
+    await register(firstName, lastName, email, password, cleanedPhone);
     setFirstName("");
     setLastName("");
     setEmail("");
     setPassword("");
+    setPhone('');
   };
 
   if (token) {
@@ -99,8 +101,8 @@ const LoginAndReg = () => {
               className="auth-input"
             />
             <input
-            type="phone"
-            placeholder="Enter your phone number so your messages are connected to your name!"
+            type="tel"
+            placeholder="Phone Number"
             value={phone}
             onChange={(e)=>setPhone(e.target.value)} 
             className="auth-input"
