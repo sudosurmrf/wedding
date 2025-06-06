@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import { useAuth } from '../context/AuthProvider';
 import './OurMemories.css';
 
 export default function OurMemories() {
   const [messages, setMessages] = useState([]);
   const [mediaItems, setMediaItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const {BASE_URL} = useAuth();
 
   useEffect(() => {
     async function fetchAll() {
       try {
         // 1) Fetch text messages
-        const resMessages = await fetch('/api/messages');
+        const resMessages = await fetch(`${BASE_URL}/messages`);
         const dataMessages = await resMessages.json();
 
         // 2) Fetch media items
-        const resMedia = await fetch('/api/media');
+        const resMedia = await fetch(`${BASE_URL}/media`);
         const dataMedia = await resMedia.json();
 
         setMessages(dataMessages);
@@ -34,7 +36,7 @@ export default function OurMemories() {
     <div className="our-memories-container">
       <h2>💌 Guest Messages</h2>
       {messages.length === 0 ? (
-        <p>No messages yet. Encourage your guests to text our number!</p>
+        <p>No messages yet. Text our number!</p>
       ) : (
         <ul className="messages-list">
           {messages.map((m) => (
@@ -50,7 +52,7 @@ export default function OurMemories() {
 
       <h2>📸 Guest Photos & Videos</h2>
       {mediaItems.length === 0 ? (
-        <p>No media yet. Ask your guests to snap and send!</p>
+        <p>No media yet, coming soon!</p>
       ) : (
         <div className="media-grid">
           {mediaItems.map((item) => (

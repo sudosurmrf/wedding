@@ -3,6 +3,9 @@ import cors from 'cors';
 import apiRouter from './api/index.js'
 import path from 'path'
 import { fileURLToPath } from 'url';
+import bodyParser from 'body-parser';
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import crypto from 'crypto';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
