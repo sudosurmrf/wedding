@@ -54,8 +54,7 @@ router.post('/', async(req,res,next) => {
          Bucket: S3_BUCKET,
          Key: objectKey,
          Body: fileBuffer,
-         ContentType: contentType,
-         ACL: 'public-read',
+         ContentType: contentType
        });
        await s3.send(putCommand);
 
