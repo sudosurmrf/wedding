@@ -16,7 +16,7 @@ export default function OurMemories() {
         const dataMessages = await resMessages.json();
 
         // 2) Fetch media items
-        const resMedia = await fetch(`${BASE_URL}/media`);
+        const resMedia = await fetch(`${BASE_URL}/messages/media`);
         const dataMedia = await resMedia.json();
 
         setMessages(dataMessages);
