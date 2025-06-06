@@ -31,35 +31,25 @@ router.post('/', async(req,res,next) => {
        const contentType   = req.body[`MediaContentType${i}`]; // "image/jpeg"
 
        // binary data from the Twilio media URL gets downloaded
-       const twilioSid   = process.env.TWILIO_ACCOUNT_SID;
-       const twilioToken = process.env.TWILIO_AUTH_TOKEN;
-       const authHeader  = Buffer.from(`${twilioSid}:${twilioToken}`).toString('base64');
+       const authHeader  = Buffer.from(`${process.env.TWILIO_ACCOUNT_SID}:${process.env.TWILIO_AUTH_TOKEN}`).toString('base64');
 
-       const mediaResponse = await fetch(mediaUrl, {
-        method: 'GET', 
-        responseType: 'arraybuffer',
-         headers: {
-           Authorization: `Basic ${authHeader}`,
-         },
-       });
+      const mediaResponse = await fetch(mediaUrl, {
+        headers: { Authorization: `Basic ${authHeader}` },
+      });
+      //convert response into an ArrayBuffer, then into a Buffer
+      const arrayBuffer = await mediaResponse.arrayBuffer();
+      const fileBuffer = Buffer.from(arrayBuffer);
 
-       const fileBuffer = mediaResponse.data; // raw binary
+      // send to S3
+      const putCommand = new PutObjectCommand({
+        Bucket: S3_BUCKET,
+        Key: objectKey,
+        Body: fileBuffer,
+        ContentType: contentType,
+      });
+      await s3.send(putCommand);
 
-       //unique key for S3 (timestamp + random)
-       const fileExtension = contentType.split('/')[1]; //"jpeg", "png", "mp4"
-       const objectKey = `memories/${Date.now()}_${crypto.randomBytes(8).toString('hex')}.${fileExtension}`;
-
-       // 3) Upload to S3
-       const putCommand = new PutObjectCommand({
-         Bucket: S3_BUCKET,
-         Key: objectKey,
-         Body: fileBuffer,
-         ContentType: contentType
-       });
-       await s3.send(putCommand);
-
-       // 4) Construct the public URL or signed URL
-       // make sure to set ACL: 'public-read' and the bucket is configured that way the url is:
+       //construct the public URL
        const publicUrl = `https://${S3_BUCKET}.s3.amazonaws.com/${objectKey}`;
 
        // saves media metadata to our db for sorting 
