@@ -17,7 +17,7 @@ router.get('/media', async(req,res,next) => {
 
 router.get('/', async(req,res,next) => {
   try {
-    const messages = await prisma.messages.findMany();
+    const messages = await prisma.message.findMany();
     res.json(messages);
   }catch(err){
     console.log(err);
