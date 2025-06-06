@@ -28,12 +28,12 @@ if(req.method === "OPTIONS") return next();
 }
 
 router.post('/register', async(req,res,next) => {
-  const {email, password, firstName, lastName} = req.body;
+  const {email, password, firstName, lastName, phone} = req.body;
   if(!email || !password) return res.status(400).send('missing email or password! Needed for registration');
 
   try{
       const newUser = await prisma.user.create({
-        data: {first_name: firstName, last_name: lastName, email, password: await bcrypt.hash(password, 10)}
+        data: {first_name: firstName, last_name: lastName, email, password: await bcrypt.hash(password, 10), phone}
       })
 
       if(!newUser) return res.status(401).send('couldnt register a new user');

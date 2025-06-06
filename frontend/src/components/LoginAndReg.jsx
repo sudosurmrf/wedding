@@ -9,6 +9,7 @@ const LoginAndReg = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [existingUser, setExistingUser] = useState(true);
+  const [phone, setPhone] = useState('');
 
   const handleLogin = async () => {
     await login(email, password);
@@ -17,7 +18,7 @@ const LoginAndReg = () => {
   };
 
   const handleRegister = async () => {
-    await register(firstName, lastName, email, password);
+    await register(firstName, lastName, email, password, phone);
     setFirstName("");
     setLastName("");
     setEmail("");
@@ -96,6 +97,13 @@ const LoginAndReg = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="auth-input"
+            />
+            <input
+            type="phone"
+            placeholder="Enter your phone number so your messages are connected to your name!"
+            value={phone}
+            onChange={(e)=>setPhone(e.target.value)} 
+            className="auth-input"
             />
             <button onClick={handleRegister} className="auth-button">
               Register
