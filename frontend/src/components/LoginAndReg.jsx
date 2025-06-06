@@ -19,6 +19,7 @@ const LoginAndReg = () => {
 
   const handleRegister = async () => {
     const cleanedPhone = phone.replace(/[\(\)\-\+]/g, "");
+    console.log(cleanedPhone);
     await register(firstName, lastName, email, password, cleanedPhone);
     setFirstName("");
     setLastName("");

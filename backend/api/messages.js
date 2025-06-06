@@ -4,40 +4,59 @@ import prisma from '../prisma/index.js';
 const router = express.Router();
 router.use(express.json());
 
-function normalizeDigits(phone) {
-  return phone.replace(/\D/g, '');
+function normalizeTo10Digits(raw) {
+  if (!raw) return null;
+  const digitsOnly = raw.replace(/\D/g, '');
+  if (digitsOnly.length === 0) return null;
+
+  return digitsOnly.length > 10
+    ? digitsOnly.slice(-10)
+    : digitsOnly;
 }
 
 async function attachUserNames(records) {
-  const users = await prisma.user.findMany({
-    select: { phone: true, first_name: true, last_name: true }
+  const allRawNumbers = records.map((r) => r.fromNumber).filter(Boolean);
+
+
+  const normalizedSet = new Set(
+    allRawNumbers.map((num) => normalizeTo10Digits(num))
+      .filter((n) => n !== null)
+  );
+  const normalizedArray = Array.from(normalizedSet);
+
+  if (normalizedArray.length === 0) {
+    return records;
+  }
+
+  const matchedUsers = await prisma.user.findMany({
+    where: {
+      phone: { in: normalizedArray },
+    },
+    select: {
+      phone: true,
+      first_name: true,
+      last_name: true,
+    },
   });
 
-  const nameByPhone = {};
-  users.forEach((u) => {
-    const userDigits = normalizeDigits(u.phone);
-    nameByPhone[userDigits] = `${u.first_name} ${u.last_name}`;
+  const nameByNormalized = {};
+  matchedUsers.forEach((u) => {
+
+    nameByNormalized[u.phone] = `${u.first_name} ${u.last_name}`;
   });
+
 
   return records.map((rec) => {
-    const raw = rec.fromNumber || '';
-    const digits = normalizeDigits(raw);
-
-   
-    if (nameByPhone[digits]) {
-      return { ...rec, fromNumber: nameByPhone[digits] };
-    }
-
-    for (const userDigits in nameByPhone) {
-      if (digits.endsWith(userDigits)) {
-        return { ...rec, fromNumber: nameByPhone[userDigits] };
-      }
-    }
-    return rec;
+    const norm = normalizeTo10Digits(rec.fromNumber);
+    const displayName = norm && nameByNormalized[norm]
+      ? nameByNormalized[norm]
+      : rec.fromNumber;
+    return {
+      ...rec,
+      fromNumber: displayName,
+    };
   });
 }
-
-
 router.get('/media', async (req, res, next) => {
   try {
     const rawMedia = await prisma.media.findMany({
