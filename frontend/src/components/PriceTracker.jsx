@@ -15,6 +15,8 @@ const PriceTracker = () => {
     const response = await fetch(`${BASE_URL}/edc-price`);
     const { price } = await response.json();
     setPrice(price);
+    setLoading(false);
+    console.log(price);
   }
 
   useEffect(() => {

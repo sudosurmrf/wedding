@@ -20,19 +20,23 @@ router.get('/', async(req,res,next) => {
       headless: true
     });
     const page = await browser.newPage();
-    await page.goto(url, { waitUntil: 'networkidle2', timeout:30_140});
-    await page.waitForSelector('#listings-container', { timeout: 20_821 });
+    await page.goto(url, { waitUntil: 'networkidle2'});
+    const xpath = '//*[@id="listings-container"]/div[1]/div';
+    const elementHandle = await page.waitForXPath(xpath, { timeout: 15000 });
+    // await page.waitForSelector('#listings-container', { timeout: 20_821 });
 
-    const price = await page.$eval(
-      '#listings-container > div:nth-child(1) > div', 
-      el => el.getAttribute('data-price')
-    );
-    console.log('the price returned is: ', price);
-    const noDollarPrice = price.replace('$',"");
-    const numericPrice = Number(noDollarPrice);
-    if(isNaN(numericPrice)) throw new Error(`could not parse the price: ${numericPrice}`);
-    console.log('it worked', numericPrice);
-    res.json({price: numericPrice });
+    // const price = await page.$eval(
+    //   '#listings-container > div:nth-child(1) > div', 
+    //   el => el.getAttribute('data-price')
+    // );
+    const raw = await page.evaluate(el => el.getAttribute('data-price'), elementHandle);
+    console.log('the price returned is: ', raw);
+
+    const cleaned = raw.replace(/[^0-9.]/g, '');
+    const price = parseFloat(cleaned); 
+    if(isNaN(price)) throw new Error(`could not parse the price: ${price}`);
+    console.log('it worked', price);
+    res.json({price});
   
   }catch(err){
     console.log(err);
