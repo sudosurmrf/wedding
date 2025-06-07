@@ -24,7 +24,7 @@ router.get('/', async(req,res,next) => {
     await page.waitForSelector('#listings-container', { timeout: 15_000 });
 
     const price = await page.$eval(
-      '#listings-container > div > div', 
+      '#listings-container > div:nth-child(1) > div', 
       el => el.getAttribute('data-price')
     );
     const noDollarPrice = price.replace('$',"");
