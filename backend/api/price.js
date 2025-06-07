@@ -20,8 +20,8 @@ router.get('/', async(req,res,next) => {
       headless: true
     });
     const page = await browser.newPage();
-    await page.goto(url, { waitUntil: 'networkidle2', timeout:10_028});
-    await page.waitForSelector('#listings-container', { timeout: 6_937 });
+    await page.goto(url, { waitUntil: 'networkidle2', timeout:30_140});
+    await page.waitForSelector('#listings-container', { timeout: 20_821 });
 
     const price = await page.$eval(
       '#listings-container > div:nth-child(1) > div', 
