@@ -1,7 +1,32 @@
-# ─── BASE IMAGE & APT DEPENDENCIES ─────────────────────────────────────────
-FROM node:22-slim
+# ─── STAGE 1: Build Front-End ─────────────────────────────────────────────────
+FROM node:22-slim AS frontend-builder
+WORKDIR /app/frontend
 
-# Install all the libs headless Chrome needs
+# install & build your Vite app
+COPY frontend/package.json frontend/package-lock.json ./
+RUN npm ci
+COPY frontend/ ./
+RUN npm run build        # outputs /app/frontend/dist
+
+# ─── STAGE 2: Build Back-End & Bundle Assets ─────────────────────────────────
+FROM node:22-slim AS backend-builder
+WORKDIR /app/backend
+
+# install back-end deps
+COPY backend/package.json backend/package-lock.json ./
+RUN npm ci
+
+# copy back-end code
+COPY backend/ ./
+
+# pull in the compiled front-end
+COPY --from=frontend-builder /app/frontend/dist ./public
+
+# ─── STAGE 3: Runtime Image with Puppeteer Deps ───────────────────────────────
+FROM node:22-slim AS runtime
+WORKDIR /app/backend
+
+# install the Linux libraries headless Chrome/Chromium needs
 RUN apt-get update && apt-get install -y \
     gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 \
     libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 \
@@ -13,25 +38,11 @@ RUN apt-get update && apt-get install -y \
     libappindicator1 xdg-utils wget --no-install-recommends \
   && rm -rf /var/lib/apt/lists/*
 
-# ─── BUILD FRONTEND ─────────────────────────────────────────────────────────
-WORKDIR /app/frontend
-COPY frontend/package.json frontend/package-lock.json ./
-RUN npm ci
-COPY frontend/ ./
-RUN npm run build
+# bring in everything from the backend-builder (which includes your public/)
+COPY --from=backend-builder /app/backend ./
 
-# ─── BUILD BACKEND & COPY ASSETS ────────────────────────────────────────────
-WORKDIR /app/backend
-COPY backend/package.json backend/package-lock.json ./
-RUN npm ci
-COPY backend/ ./
-
-# copy built frontend into a `public` dir your server will serve
-COPY --from=0 /app/frontend/dist ./public
-
-# ─── RUNTIME & LAUNCH ───────────────────────────────────────────────────────
-WORKDIR /app/backend
-# expose just for documentation; Railway picks up PORT anyway
+# document the port; your code should listen on process.env.PORT
 EXPOSE 3000
-# make sure your server reads process.env.PORT
+
+# start your server
 CMD ["node", "server.js"]
