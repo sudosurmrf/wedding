@@ -27,9 +27,13 @@ app.get(/^(?!\/api).*/, (req, res) => {
 });
 
 app.use((err, req,res,next) => {
+  if(res.headersSent) {
+    return next(err);
+  }
   console.log(err);
   res.status(err.status || 500).json({error: err})
-})
+});
+
 const PORT = process.env.PORT
 app.listen(PORT || 3000,() => {
   console.log(`listening on ${process.env.PORT}`)
