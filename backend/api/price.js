@@ -50,7 +50,7 @@
 
 // backend/api/price.js
 import express from 'express';
-import cheerio from 'cheerio';
+import * as cheerio from 'cheerio';
 
 const router = express.Router();
 
