@@ -12,13 +12,13 @@ RUN apt-get update && apt-get install -y \
     libappindicator1 xdg-utils wget --no-install-recommends \
   && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app
+WORKDIR /app/backend
 
 # Copy only backend's package files and install deps
 COPY backend/package.json backend/package-lock.json ./
 RUN npm ci
 
 # Copy the rest of the backend code
-COPY backend/. .
+COPY backend/ ./
 
 CMD ["npm", "start"]
