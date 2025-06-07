@@ -44,4 +44,5 @@ RUN apt-get update && apt-get install -y \
 # Copy everything from the backend-builder (which already includes public/)
 COPY --from=backend-builder /app/backend ./
 
+EXPOSE 3000
 CMD ["node", "server.js"]
