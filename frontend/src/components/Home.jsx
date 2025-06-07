@@ -1,12 +1,15 @@
 import React from 'react';
 import { useAuth } from '../context/AuthProvider';
 import { useNavigate } from 'react-router-dom';
+import PriceTracker from './PriceTracker';
 import './Home.css';
 
 const Home =() => {
   const navigate = useNavigate();
   const {weddingInfo} = useAuth();
   return (
+    <>
+    <PriceTracker />
     <div className="home-container">
       <div className="hero">
         <div className="hero-overlay">
@@ -48,6 +51,7 @@ const Home =() => {
         </p>
       </footer>
     </div>
+    </>
   );
 }
 
