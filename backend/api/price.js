@@ -72,6 +72,7 @@ router.get('/', async (req, res) => {
     // 2) Load into Cheerio and grab the data-price attribute
     const $ = cheerio.load(html);
     const priceStr = $('#listings-container > div > div').attr('data-price');
+    console.log('what is this?', priceStr);
     const priceNoDollar = priceStr.replace('$',"");
     console.log(priceNoDollar);
     const price = parseFloat(priceNoDollar);
