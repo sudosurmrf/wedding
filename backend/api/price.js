@@ -21,8 +21,7 @@ router.get('/', async(req,res,next) => {
     });
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: 'networkidle2'});
-    const xpath = '//*[@id="listings-container"]/div[1]/div';
-    const elementHandle = await page.waitForXPath(xpath, { timeout: 15000 });
+    const elementHandle = await page.$x('//*[@id="listings-container"]/div[1]/div');
     // await page.waitForSelector('#listings-container', { timeout: 20_821 });
 
     // const price = await page.$eval(
