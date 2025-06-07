@@ -20,13 +20,14 @@ router.get('/', async(req,res,next) => {
       headless: true
     });
     const page = await browser.newPage();
-    await page.goto(url, { waitUntil: 'networkidle2', timeout:30_159});
-    await page.waitForSelector('#listings-container', { timeout: 15_000 });
+    await page.goto(url, { waitUntil: 'networkidle2', timeout:10_028});
+    await page.waitForSelector('#listings-container', { timeout: 6_937 });
 
     const price = await page.$eval(
       '#listings-container > div:nth-child(1) > div', 
       el => el.getAttribute('data-price')
     );
+    console.log('the price returned is: ', price);
     const noDollarPrice = price.replace('$',"");
     const numericPrice = Number(noDollarPrice);
     if(isNaN(numericPrice)) throw new Error(`could not parse the price: ${numericPrice}`);
