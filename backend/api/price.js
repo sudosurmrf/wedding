@@ -55,7 +55,8 @@ import * as cheerio from 'cheerio';
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-  const url = 'https://www.stubhub.com/electric-daisy-carnival-las-vegas-tickets-5-15-2026/event/158340054/';
+  const url = 'https://www.stubhub.com/electric-daisy-carnival-las-vegas-tickets-5-15-2026/event/158340054/?qid=55d4d70c-84b8-4f79-90a6-1ee618c161d0&iid=b423c053-e205-4482-8d26-afc5a4a111db&index=stubhub&ut=6c568e86768074f19b061224ac4b40e400ca4dfb&quantity=1';
+  // const url = 'https://www.stubhub.com/electric-daisy-carnival-las-vegas-tickets-5-15-2026/event/158340054/';
 
   try {
     // 1) Fetch the page HTML
