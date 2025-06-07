@@ -23,6 +23,7 @@
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "prisma": "^6.8.2",
+    "puppeteer": "^24.10.0",
     "twilio": "^5.7.0"
   }
 }

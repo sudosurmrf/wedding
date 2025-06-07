@@ -8,11 +8,13 @@ import Rsvp from './components/Rsvp';
 import Info from './components/Info';
 import OurMemories from './components/OurMemories';
 import Registry from './components/Registry';
+import PriceTracker from './components/PriceTracker';
 
 const App = () => {
   return (
     <>
       <Navbar />
+      <PriceTracker />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/media' element={<OurMemories />} />
