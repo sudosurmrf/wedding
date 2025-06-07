@@ -2,7 +2,6 @@ import express from 'express';
 import puppeteer from 'puppeteer';
 const router = express.Router();
 router.use(express.json());
-router.set('trust proxy', 1);
 
 import rateLimit from 'express-rate-limit';
 const limiter = rateLimit({
