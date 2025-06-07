@@ -21,13 +21,7 @@ router.get('/', async(req,res,next) => {
     });
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: 'networkidle2'});
-    const elementHandle = await page.$x('//*[@id="listings-container"]/div[1]/div');
-    // await page.waitForSelector('#listings-container', { timeout: 20_821 });
-
-    // const price = await page.$eval(
-    //   '#listings-container > div:nth-child(1) > div', 
-    //   el => el.getAttribute('data-price')
-    // );
+    const [elementHandle] = await page.$x('//*[@id="listings-container"]/div[1]/div');
     const raw = await page.evaluate(el => el.getAttribute('data-price'), elementHandle);
     console.log('the price returned is: ', raw);
 
